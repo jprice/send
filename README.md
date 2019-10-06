@@ -16,6 +16,7 @@
 * [Localization](#localization)
 * [Contributing](#contributing)
 * [Testing](#testing)
+* [Deployment](#deployment)
 * [Android](#android)
 * [License](#license)
 
@@ -29,7 +30,7 @@ A file sharing experiment which allows you to send encrypted files to other user
 
 ## Requirements
 
-- [Node.js 10.0+](https://nodejs.org/)
+- [Node.js 10.x](https://nodejs.org/)
 - [Redis server](https://redis.io/) (optional for development)
 - [AWS S3](https://aws.amazon.com/s3/) or compatible service. (optional)
 
@@ -88,6 +89,12 @@ Pull requests are always welcome! Feel free to check out the list of ["good firs
 | Production  | <https://send.firefox.com/>
 | Stage       | <https://stage.send.nonprod.cloudops.mozgcp.net/>
 | Development | <https://send2.dev.lcip.org/>
+
+---
+
+## Deployment
+
+see also [docs/deployment.md](docs/deployment.md)
 
 ---
 

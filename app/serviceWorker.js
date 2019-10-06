@@ -11,13 +11,14 @@ const map = new Map();
 const IMAGES = /.*\.(png|svg|jpg)$/;
 const VERSIONED_ASSET = /\.[A-Fa-f0-9]{8}\.(js|css|png|svg|jpg)$/;
 const DOWNLOAD_URL = /\/api\/download\/([A-Fa-f0-9]{4,})/;
+const FONT = /\.woff2?$/;
 
-self.addEventListener('install', event => {
-  event.waitUntil(precache());
+self.addEventListener('install', () => {
+  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(self.clients.claim().then(precache));
 });
 
 async function decryptStream(id) {
@@ -83,16 +84,28 @@ async function decryptStream(id) {
 }
 
 async function precache() {
+  try {
+    await cleanCache();
+    const cache = await caches.open(version);
+    const images = assets.match(IMAGES);
+    await cache.addAll(images);
+  } catch (e) {
+    console.error(e);
+    // cache will get populated on demand
+  }
+}
+
+async function cleanCache() {
   const oldCaches = await caches.keys();
   for (const c of oldCaches) {
     if (c !== version) {
       await caches.delete(c);
     }
   }
-  const cache = await caches.open(version);
-  const images = assets.match(IMAGES);
-  await cache.addAll(images);
-  return self.skipWaiting();
+}
+
+function cacheable(url) {
+  return VERSIONED_ASSET.test(url) || FONT.test(url);
 }
 
 async function cachedOrFetched(req) {
@@ -102,7 +115,7 @@ async function cachedOrFetched(req) {
     return cached;
   }
   const fetched = await fetch(req);
-  if (fetched.ok && VERSIONED_ASSET.test(req.url)) {
+  if (fetched.ok && cacheable(req.url)) {
     cache.put(req, fetched.clone());
   }
   return fetched;
@@ -115,7 +128,7 @@ self.onfetch = event => {
   const dlmatch = DOWNLOAD_URL.exec(url.pathname);
   if (dlmatch) {
     event.respondWith(decryptStream(dlmatch[1]));
-  } else if (VERSIONED_ASSET.test(url.pathname)) {
+  } else if (cacheable(url.pathname)) {
     event.respondWith(cachedOrFetched(req));
   }
 };

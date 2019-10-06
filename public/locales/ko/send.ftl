@@ -4,8 +4,8 @@ siteFeedback = 사용자 의견
 importingFile = 가져오는 중…
 encryptingFile = 암호화 중…
 decryptingFile = 복호화 중…
-downloadCount = { $num } 다운로드
-timespanHours = 1 시간
+downloadCount = 다운로드 { $num }회
+timespanHours = { $num }시간
 copiedUrl = 복사 완료!
 unlockInputPlaceholder = 비밀번호
 unlockButtonLabel = 잠금 해제
@@ -49,7 +49,7 @@ introTitle = 간단하고, 사생활을 보호하는 파일 공유
 introDescription = { -send-brand }를 사용하면 종단 암호화와 자동으로 만료되는 링크를 사용해 파일을 공유할 수 있습니다. 안전하게 공유할 수 있고 공유된 파일이 계속 온라인에 남지 않게 됩니다.
 notifyUploadEncryptDone = 파일이 암호화 되어서 보낼 수 있게 됐습니다
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
-archiveExpiryInfo = { $downloadCount }나 { $timespan } 후 만료됨
+archiveExpiryInfo = { $downloadCount } 혹은 { $timespan } 후 만료됨
 timespanMinutes =
     { $num ->
        *[other] { $num }분
@@ -98,15 +98,21 @@ expiredTitle = 이 링크는 만료되었습니다.
 notSupportedDescription = { -send-brand }는 이 브라우저와 작동하지 않습니다. { -send-short-brand }는 최신 { -firefox }와 가장 잘 작동하며, 대부분의 최신 웹 브라우저와도 잘 작동합니다.
 downloadFirefox = 다운로드 { -firefox }
 legalTitle = { -send-short-brand } 개인정보 보호 공지
+legalDateStamp = 버전 1.0, 2019년 3월 12일 출시됨
 # A short representation of a countdown timer containing the number of days, hours, and minutes remaining as digits, example "2d 11h 56m"
 expiresDaysHoursMinutes = { $days }일 { $hours }시간 { $minutes }분
 addFilesButton = 업로드할 파일을 선택하세요
 uploadButton = 업로드
+# the first part of the string 'Drag and drop files or click to send up to 1GB'
+dragAndDropFiles = 파일을 이곳에 드래그 엔 드롭하세요.
+# the second part of the string 'Drag and drop files or click to send up to 1GB'
+# $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
+orClickWithSize = 또는 여기를 클릭하여 { $size }까지의 파일을 공유하세요.
 addPassword = 비밀번호로 파일 보호
 emailPlaceholder = 이메일 입력
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = { $size }까지 파일을 보낼 수 있게 로그인
-signInButton = 로그인/등록
+signInOnlyButton = 로그인
 accountBenefitTitle = { -firefox } 계정을 하나 만들거나, 로그인
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 accountBenefitLargeFiles = { $size }까지의 파일 공유
@@ -121,4 +127,14 @@ signOut = 로그아웃
 okButton = 확인
 downloadingTitle = 다운로드 중
 noStreamsWarning = 이 브라우저는 이렇게 큰 용량의 파일 암호화를 풀 수 없을 수도 있습니다.
+noStreamsOptionCopy = 다른 브라우저에서 열 수 있도록 링크를 복사
+noStreamsOptionFirefox = 우리가 애용하는 브라우저를 사용해 보세요
 noStreamsOptionDownload = 이 브라우저로 계속하기
+downloadFirefoxPromo = 완전히 새로운 { -firefox }로 { -send-short-brand }가 제공됩니다.
+# the next line after the colon contains a file name
+shareLinkDescription = 파일 링크 공유:
+shareLinkButton = 링크 공유
+# $name is the name of the file
+shareMessage = { -send-brand }으로 “{ $name }” 파일을 내려받으세요: 쉽고 안전한 파일 공유입니다.
+trailheadPromo = 개인 정보를 보호하는 방법이 있습니다. 파이어폭스와 함께 하세요.
+learnMore = 자세히 알아보기

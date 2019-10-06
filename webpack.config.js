@@ -67,7 +67,7 @@ const serviceWorker = {
       },
       {
         // loads all assets from assets/ for use by common/assets.js
-        test: require.resolve('./build/generate_asset_map.js'),
+        test: require.resolve('./common/generate_asset_map.js'),
         use: ['babel-loader', 'val-loader']
       }
     ]
@@ -103,8 +103,7 @@ const web = {
                 __dirname,
                 'node_modules/@dannycoates/webcrypto-liner'
               ),
-              path.resolve(__dirname, 'node_modules/fluent'),
-              path.resolve(__dirname, 'node_modules/fluent-intl-polyfill'),
+              path.resolve(__dirname, 'node_modules/@fluent'),
               path.resolve(__dirname, 'node_modules/intl-pluralrules')
             ],
             options: webJsOptions
@@ -114,7 +113,8 @@ const web = {
             include: [path.resolve(__dirname, 'node_modules')],
             exclude: [
               path.resolve(__dirname, 'node_modules/crc'),
-              path.resolve(__dirname, 'node_modules/fluent'),
+              path.resolve(__dirname, 'node_modules/@fluent'),
+              path.resolve(__dirname, 'node_modules/@sentry'),
               path.resolve(__dirname, 'node_modules/tslib'),
               path.resolve(__dirname, 'node_modules/webcrypto-core')
             ],
@@ -176,7 +176,7 @@ const web = {
       },
       {
         // loads all assets from assets/ for use by common/assets.js
-        test: require.resolve('./build/generate_asset_map.js'),
+        test: require.resolve('./common/generate_asset_map.js'),
         use: ['babel-loader', 'val-loader']
       }
     ]
@@ -216,6 +216,7 @@ const web = {
 
 module.exports = (env, argv) => {
   const mode = argv.mode || 'production';
+  // eslint-disable-next-line no-console
   console.error(`mode: ${mode}`);
   process.env.NODE_ENV = web.mode = serviceWorker.mode = mode;
   if (mode === 'development') {

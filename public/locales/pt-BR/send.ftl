@@ -54,7 +54,7 @@ passwordSetError = Essa senha não pôde ser definida
 -firefox = Firefox
 -mozilla = Mozilla
 introTitle = Compartilhamento de arquivos fácil e privativo
-introDescription = O { -send-brand } permite compartilhar arquivos com criptografia ponto a ponto e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não ficarão online para sempre.
+introDescription = O { -send-brand } permite compartilhar arquivos com criptografia de ponta a ponta e um link que expira automaticamente. Assim você pode manter o que compartilha privativo e ter certeza que suas coisas não ficarão online para sempre.
 notifyUploadEncryptDone = Seu arquivo foi criptografado e está pronto para ser enviado
 # downloadCount is from the downloadCount string and timespan is a timespanMinutes string. ex. 'Expires after 2 downloads or 25 minutes'
 archiveExpiryInfo = Expirar após { $downloadCount } ou { $timespan }
@@ -94,7 +94,7 @@ totalSize = Tamanho total: { $size }
 copyLinkDescription = Copie o link para compartilhar seu arquivo:
 copyLinkButton = Copiar link
 downloadTitle = Baixar arquivos
-downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia ponto a ponto e um link que expira automaticamente.
+downloadDescription = Este arquivo foi compartilhado via { -send-brand } com criptografia de ponta a ponta e um link que expira automaticamente.
 trySendDescription = Experimente o { -send-brand } para compartilhamento de arquivos simples e seguro.
 # count will always be > 10
 tooManyFiles =
@@ -126,22 +126,30 @@ addPassword = Proteger com senha
 emailPlaceholder = Informe seu e-mail
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
 signInSizeBump = Entre na sua conta para enviar até { $size }
-signInButton = Entrar / Cadastrar-se
-accountBenefitTitle = Crie uma Conta { -firefox } ou entre na sua conta
+signInOnlyButton = Entrar
+accountBenefitTitle = Crie uma Conta { -firefox } ou entre se já tiver
 # $size is the size of the file, displayed using the fileSize message as format (e.g. "2.5MB")
-accountBenefitLargeFiles = Compartilhe arquivos até { $size }
-accountBenefitDownloadCount = Compartilhe arquivos com mais pessoas
+accountBenefitLargeFiles = Compartilhe arquivos até { $size }.
+accountBenefitDownloadCount = Compartilhe arquivos com mais pessoas.
 accountBenefitTimeLimit =
     { $count ->
-        [one] Mantenha links ativos por até 1 dia
-       *[other] Mantenha links ativos por até { $count } dias
+        [one] Mantenha links ativos por até 1 dia.
+       *[other] Mantenha links ativos por até { $count } dias.
     }
-accountBenefitSync = Gerencie arquivos compartilhados a partir de qualquer dispositivo
-accountBenefitMoz = Conheça outros serviços da { -mozilla }
+accountBenefitSync = Gerencie arquivos compartilhados a partir de qualquer dispositivo.
+accountBenefitMoz = Conheça outros serviços da { -mozilla }.
 signOut = Sair
 okButton = OK
 downloadingTitle = Baixando
 noStreamsWarning = Este navegador pode não conseguir descriptografar um arquivo tão grande.
 noStreamsOptionCopy = Copiar o link para abrir em outro navegador
-noStreamsOptionFirefox = Experimentar nosso navegador preferido
+noStreamsOptionFirefox = Experimente nosso navegador preferido
 noStreamsOptionDownload = Continuar com este navegador
+downloadFirefoxPromo = O { -send-short-brand } é apresentado pelo novo { -firefox }.
+# the next line after the colon contains a file name
+shareLinkDescription = Compartilhe o link para o seu arquivo:
+shareLinkButton = Compartilhar link
+# $name is the name of the file
+shareMessage = Baixe "{ $name }" com o { -send-brand }: compartilhamento de arquivos simples e seguro
+trailheadPromo = Existe um meio de proteger sua privacidade. Use o Firefox.
+learnMore = Saiba mais.

@@ -67,7 +67,10 @@ module.exports = function(app) {
   }
   app.use(function(req, res, next) {
     res.set('Pragma', 'no-cache');
-    res.set('Cache-Control', 'no-cache');
+    res.set(
+      'Cache-Control',
+      'private, no-cache, no-store, must-revalidate, max-age=0'
+    );
     next();
   });
   app.use(bodyParser.json());
@@ -79,6 +82,7 @@ module.exports = function(app) {
   app.get('/error', language, pages.blank);
   app.get('/oauth', language, pages.blank);
   app.get('/legal', language, pages.legal);
+  app.get('/login', language, pages.index);
   app.get('/app.webmanifest', language, require('./webmanifest'));
   app.get(`/download/:id${ID_REGEX}`, language, pages.download);
   app.get('/unsupported/:reason', language, pages.unsupported);
@@ -104,6 +108,7 @@ module.exports = function(app) {
   app.post(`/api/info/:id${ID_REGEX}`, auth.owner, require('./info'));
   app.post('/api/metrics', require('./metrics'));
   app.get('/__version__', function(req, res) {
+    // eslint-disable-next-line node/no-missing-require
     res.sendFile(require.resolve('../../dist/version.json'));
   });
 
